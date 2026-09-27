@@ -1,0 +1,90 @@
+/* 모바일: 세로로 쌓고 단계 사이에 아래 화살표 */
+.steps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+.item {
+  position: relative; /* 화살표를 단계 사이 빈칸에 놓기 위한 기준점 */
+}
+
+.arrow {
+  position: absolute;
+  top: calc(var(--space-8) / -2); /* 위쪽 빈칸의 한가운데 */
+  left: 50%;
+  color: var(--color-text-muted);
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--space-2);
+  border: none;
+  border-radius: var(--radius-lg);
+  background: none;
+  text-align: center;
+}
+
+.number {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background-color: var(--color-bg);
+  font-weight: 700;
+  transition:
+    background-color var(--duration),
+    border-color var(--duration),
+    box-shadow var(--duration),
+    color var(--duration);
+}
+
+.title {
+  font-weight: 600;
+  transition: color var(--duration);
+}
+
+/* 선택된 단계: aria-pressed="true"인 버튼 */
+.step[aria-pressed='true'] .number {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent);
+  box-shadow: 0 0 0 6px var(--color-glow);
+  color: var(--color-on-accent);
+}
+
+.step[aria-pressed='true'] .title {
+  color: var(--color-accent);
+}
+
+.description {
+  margin-top: var(--space-6);
+  padding: var(--space-4) var(--space-6);
+  border-left: 3px solid var(--color-accent);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  background-color: var(--color-bg-subtle);
+}
+
+/* 태블릿 이상: 가로 3칸, 단계 사이에 오른쪽 화살표 */
+@media (min-width: 768px) {
+  .steps {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-12);
+  }
+
+  .arrow {
+    top: calc(var(--space-2) + 22px); /* 번호 원의 세로 가운데 */
+    left: calc(var(--space-12) / -2); /* 왼쪽 빈칸의 한가운데 */
+    transform: translate(-50%, -50%);
+  }
+
+  .step {
+    padding: var(--space-2) var(--space-4);
+  }
+}

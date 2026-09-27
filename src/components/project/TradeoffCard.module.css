@@ -1,0 +1,125 @@
+.card {
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg-subtle);
+}
+
+/* 접힌 상태에서 보이는 부분: [질문 / 한 줄 설명] + 오른쪽 화살표 */
+.summary {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: var(--space-1) var(--space-4);
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  list-style: none; /* 브라우저 기본 ▶ 표시 숨김 */
+}
+
+.summary::-webkit-details-marker {
+  display: none; /* Safari용 기본 ▶ 표시 숨김 */
+}
+
+.question {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  transition: color var(--duration);
+}
+
+.summary:hover .question {
+  color: var(--color-accent);
+}
+
+.oneLine {
+  grid-column: 1;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.chevron {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  color: var(--color-text-muted);
+  transition: transform var(--duration);
+}
+
+/* 펼쳐졌을 때 화살표를 위로 */
+.card[open] .chevron {
+  transform: rotate(180deg);
+}
+
+/* 선택지 A/B: 모바일 위아래 → 태블릿 이상 나란히 */
+.options {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+  padding: 0 var(--space-4) var(--space-4);
+}
+
+.option {
+  padding: var(--space-4) var(--space-6);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+}
+
+.optionLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+  font-weight: 700;
+}
+
+.key {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-accent);
+  color: var(--color-on-accent);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+}
+
+.points {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.point {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  font-size: 0.9375rem;
+}
+
+.tag {
+  flex-shrink: 0;
+  padding: 1px var(--space-2);
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+/* color-mix: 글자색을 13%만 섞어 연한 배경을 만듦 */
+.pro {
+  background-color: color-mix(in srgb, var(--color-positive) 13%, transparent);
+  color: var(--color-positive);
+}
+
+.con {
+  background-color: color-mix(in srgb, var(--color-negative) 13%, transparent);
+  color: var(--color-negative);
+}
+
+@media (min-width: 768px) {
+  .summary {
+    padding: var(--space-6);
+  }
+
+  .options {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 var(--space-6) var(--space-6);
+  }
+}
