@@ -15,7 +15,7 @@ function FlowDiagram({ steps }: FlowDiagramProps) {
     <div>
       <ol className={styles.steps}>
         {steps.map((step, index) => (
-          <li key={step.id} className={styles.item}>
+          <li key={step.id} className={styles.item} data-reveal-item>
             {index > 0 && <ArrowIcon />}
             <button
               type="button"

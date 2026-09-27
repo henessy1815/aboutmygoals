@@ -12,7 +12,7 @@ function Learning({ learning }: LearningProps) {
     <Section id="learning" eyebrow={learning.eyebrow} title={learning.title}>
       <ul className={styles.list}>
         {learning.items.map((item) => (
-          <li key={item.title}>
+          <li key={item.title} data-reveal-item>
             <Card className={styles.card}>
               <h3>{item.title}</h3>
               <p className={styles.method}>{item.method}</p>

@@ -17,7 +17,7 @@ function Goal({ goal, stacks }: GoalProps) {
       <h3 className={styles.subtitle}>{goal.stacksTitle}</h3>
       <ul className={styles.stacks}>
         {stacks.map((stack) => (
-          <li key={stack.id}>
+          <li key={stack.id} data-reveal-item>
             <Card className={styles.stackCard}>
               <Badge label={stack.name} />
               <p className={styles.role}>{stack.role}</p>
@@ -29,7 +29,7 @@ function Goal({ goal, stacks }: GoalProps) {
       <h3 className={styles.subtitle}>{goal.deliverablesTitle}</h3>
       <ul className={styles.checklist}>
         {goal.deliverables.map((item) => (
-          <li key={item.label} className={styles.checkItem}>
+          <li key={item.label} className={styles.checkItem} data-reveal-item>
             <CheckIcon />
             <span>
               {item.label}

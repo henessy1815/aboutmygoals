@@ -12,7 +12,8 @@ interface HeroProps {
 // 첫 화면: 이름 → 한 줄 소개 → 스택 뱃지 → GitHub 버튼
 function Hero({ profile, stacks, hero }: HeroProps) {
   return (
-    <Section id="hero" className={styles.hero}>
+    // 첫 화면은 방문하자마자 보여야 하므로 등장 애니메이션 없음
+    <Section id="hero" className={styles.hero} animate={false}>
       <div className={styles.background} aria-hidden="true" />
       <span className={styles.bar} aria-hidden="true" />
       <h1 className={styles.name}>{profile.name}</h1>

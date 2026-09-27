@@ -13,7 +13,7 @@ function FutureIdea({ idea }: FutureIdeaProps) {
       <p className={styles.description}>{idea.description}</p>
       <ul className={styles.chains}>
         {idea.chains.map((chain) => (
-          <li key={chain}>
+          <li key={chain} data-reveal-item>
             <Badge label={chain} />
           </li>
         ))}
@@ -24,7 +24,7 @@ function FutureIdea({ idea }: FutureIdeaProps) {
           <h3 className={styles.subtitle}>{idea.challengesTitle}</h3>
           <ol className={styles.challenges}>
             {idea.challenges.map((challenge, index) => (
-              <li key={challenge} className={styles.challenge}>
+              <li key={challenge} className={styles.challenge} data-reveal-item>
                 {/* 01, 02처럼 두 자리 번호 */}
                 <span className={styles.index}>{String(index + 1).padStart(2, '0')}</span>
                 {challenge}
@@ -35,7 +35,7 @@ function FutureIdea({ idea }: FutureIdeaProps) {
 
         <div>
           <h3 className={styles.subtitle}>{idea.principleTitle}</h3>
-          <p className={styles.principle}>
+          <p className={styles.principle} data-reveal-item>
             <LockIcon />
             {idea.principle}
           </p>

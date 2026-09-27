@@ -14,7 +14,7 @@ const OPTION_KEYS = ['A', 'B']
 // 카드마다 따로 동작하므로 여러 개를 동시에 펼칠 수 있음
 function TradeoffCard({ tradeoff, prosLabel, consLabel }: TradeoffCardProps) {
   return (
-    <details className={styles.card}>
+    <details className={styles.card} data-reveal-item>
       <summary className={styles.summary}>
         <span className={styles.question}>{tradeoff.question}</span>
         <span className={styles.oneLine}>{tradeoff.summary}</span>

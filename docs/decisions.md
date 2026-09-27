@@ -90,3 +90,10 @@
 - 선택지(구현): A React useState / B HTML popover 속성 → A (닫기 동작을 코드로 직접 보며 배우기 위해)
 - 동작: 768px 미만에서 햄버거 버튼 표시. 링크 클릭·Esc·어두운 막 클릭·데스크톱 너비로 바뀜 → 닫기. Esc로 닫으면 햄버거 버튼으로 초점 복귀.
 - HTML 순서는 "이름 → 햄버거 → 링크 → 테마 버튼"으로 두어, 메뉴를 연 뒤 Tab을 누르면 바로 메뉴 링크로 이동. 화면상 위치는 CSS `order`로 조정.
+
+### 등장 애니메이션: 카드까지 하나씩, Hero 제외
+- 선택지: A 섹션 단위(Hero 제외) / B 섹션 단위(Hero 포함) / C 카드·목록 항목까지 하나씩
+- 결정: C. 첫 화면(Hero)은 방문 즉시 보여야 하므로 애니메이션 없음.
+- 구현: `useInView`(IntersectionObserver)가 섹션 안쪽과 `data-reveal-item` 요소를 각각 지켜보다 화면에 들어오면 `data-shown`을 붙이고, 같이 들어온 요소끼리 80ms씩 시차. 움직임은 `global.css`. 한 번 나타나면 감시 종료.
+- 움직이는 대상은 section 자체가 아니라 안쪽 div → 현재 섹션 감지(useActiveSection)의 위치 계산이 흔들리지 않음.
+- `screen and (prefers-reduced-motion: no-preference)`일 때만 숨김 → "동작 줄이기" 사용자와 인쇄 시에는 처음부터 모두 보임.

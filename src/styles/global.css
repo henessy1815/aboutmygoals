@@ -165,6 +165,34 @@ ol {
   outline-offset: 2px;
 }
 
+/* ── 4. 등장 애니메이션 ──────────────────── */
+/*
+ * data-reveal(섹션 안쪽)과 data-reveal-item(카드·목록 항목)은 처음에 숨겨 두고,
+ * useInView가 data-shown을 붙이면 살짝 떠오르며 나타남.
+ * screen + no-preference 조건: 인쇄할 때와 "동작 줄이기" 사용자는 처음부터 그대로 보임
+ */
+@media screen and (prefers-reduced-motion: no-preference) {
+  [data-reveal],
+  [data-reveal-item] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 500ms ease-out,
+      transform 500ms ease-out;
+  }
+
+  [data-reveal-item] {
+    transform: translateY(16px);
+    transition-duration: 400ms;
+  }
+
+  [data-reveal][data-shown],
+  [data-reveal-item][data-shown] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* OS에서 "동작 줄이기"를 켠 사용자: 애니메이션·부드러운 스크롤 끔 */
 @media (prefers-reduced-motion: reduce) {
   html {
