@@ -30,20 +30,39 @@
   text-align: center;
 }
 
-.number {
+/* 단계 아이콘 원 */
+.circle {
+  position: relative;
   display: grid;
   place-items: center;
-  width: 44px;
-  height: 44px;
+  width: 60px;
+  height: 60px;
   border: 2px solid var(--color-border);
   border-radius: var(--radius-full);
   background-color: var(--color-bg);
-  font-weight: 700;
+  color: var(--color-text-muted);
   transition:
     background-color var(--duration),
     border-color var(--duration),
     box-shadow var(--duration),
     color var(--duration);
+}
+
+/* 원 오른쪽 위의 작은 단계 번호 */
+.number {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--color-bg);
+  border-radius: var(--radius-full);
+  background-color: var(--color-text-muted);
+  color: var(--color-bg);
+  font-size: 0.6875rem;
+  font-weight: 700;
 }
 
 .title {
@@ -52,11 +71,15 @@
 }
 
 /* 선택된 단계: aria-pressed="true"인 버튼 */
-.step[aria-pressed='true'] .number {
+.step[aria-pressed='true'] .circle {
   border-color: var(--color-accent);
   background-color: var(--color-accent);
   box-shadow: 0 0 0 6px var(--color-glow);
   color: var(--color-on-accent);
+}
+
+.step[aria-pressed='true'] .number {
+  background-color: var(--color-text);
 }
 
 .step[aria-pressed='true'] .title {
@@ -79,7 +102,7 @@
   }
 
   .arrow {
-    top: calc(var(--space-2) + 22px); /* 번호 원의 세로 가운데 */
+    top: calc(var(--space-2) + 30px); /* 아이콘 원의 세로 가운데 */
     left: calc(var(--space-12) / -2); /* 왼쪽 빈칸의 한가운데 */
     transform: translate(-50%, -50%);
   }

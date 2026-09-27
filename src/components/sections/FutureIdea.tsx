@@ -1,5 +1,11 @@
+import { Lock, Orbit } from 'lucide-react'
 import type { IdeaContent } from '../../types'
 import Badge from '../common/Badge'
+import BrandIcon from '../common/BrandIcon'
+import { CHAIN_LOGOS } from '../common/brandLogos'
+import Icon from '../common/Icon'
+import IconTile from '../common/IconTile'
+import ChainIllustration from '../illustrations/ChainIllustration'
 import Section from '../layout/Section'
 import styles from './FutureIdea.module.css'
 
@@ -9,25 +15,36 @@ interface FutureIdeaProps {
 
 function FutureIdea({ idea }: FutureIdeaProps) {
   return (
-    <Section id="idea" eyebrow={idea.eyebrow} title={idea.title}>
-      <p className={styles.description}>{idea.description}</p>
-      <ul className={styles.chains}>
-        {idea.chains.map((chain) => (
-          <li key={chain} data-reveal-item>
-            <Badge label={chain} />
-          </li>
-        ))}
-      </ul>
+    <Section id="idea" eyebrow={idea.eyebrow} eyebrowIcon={idea.icon} title={idea.title}>
+      <div className={styles.overview}>
+        <div>
+          <p className={styles.description}>{idea.description}</p>
+          <ul className={styles.chains}>
+            {idea.chains.map((chain) => {
+              // 공식 로고가 없는 체인(Cosmos)은 궤도 모양 아이콘으로 대신
+              const logo = CHAIN_LOGOS[chain]
+              const icon = logo ? <BrandIcon icon={logo} size={14} /> : <Orbit size={14} aria-hidden="true" />
+              return (
+                <li key={chain} data-reveal-item>
+                  <Badge label={chain} icon={icon} />
+                </li>
+              )
+            })}
+          </ul>
+        </div>
+        <ChainIllustration className={styles.illustration} />
+      </div>
 
       <div className={styles.columns}>
         <div>
           <h3 className={styles.subtitle}>{idea.challengesTitle}</h3>
           <ol className={styles.challenges}>
-            {idea.challenges.map((challenge, index) => (
-              <li key={challenge} className={styles.challenge} data-reveal-item>
-                {/* 01, 02처럼 두 자리 번호 */}
-                <span className={styles.index}>{String(index + 1).padStart(2, '0')}</span>
-                {challenge}
+            {idea.challenges.map((challenge) => (
+              <li key={challenge.label} className={styles.challenge} data-reveal-item>
+                <IconTile size="sm">
+                  <Icon name={challenge.icon} size={18} />
+                </IconTile>
+                {challenge.label}
               </li>
             ))}
           </ol>
@@ -36,21 +53,14 @@ function FutureIdea({ idea }: FutureIdeaProps) {
         <div>
           <h3 className={styles.subtitle}>{idea.principleTitle}</h3>
           <p className={styles.principle} data-reveal-item>
-            <LockIcon />
+            <IconTile size="sm">
+              <Lock size={18} aria-hidden="true" />
+            </IconTile>
             {idea.principle}
           </p>
         </div>
       </div>
     </Section>
-  )
-}
-
-function LockIcon() {
-  return (
-    <svg className={styles.lockIcon} width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
-      <rect x="5" y="11" width="14" height="10" rx="2" fill="none" stroke="currentColor" strokeWidth="2" />
-      <path d="M8 11V7a4 4 0 0 1 8 0v4" fill="none" stroke="currentColor" strokeWidth="2" />
-    </svg>
   )
 }
 

@@ -1,6 +1,18 @@
+/* 소개 글 + 알약맵 일러스트: 모바일은 위아래, 데스크톱은 좌우 */
+.introRow {
+  display: grid;
+  align-items: center;
+  gap: var(--space-8);
+}
+
 .intro {
   max-width: 42em;
   font-size: var(--text-lg);
+}
+
+.illustration {
+  justify-self: center;
+  max-width: 340px;
 }
 
 .subtitle {
@@ -24,4 +36,16 @@
 
 .infoIcon {
   flex-shrink: 0;
+}
+
+@media (min-width: 1024px) {
+  .introRow {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: var(--space-12);
+  }
+
+  .illustration {
+    justify-self: end;
+    max-width: 400px;
+  }
 }

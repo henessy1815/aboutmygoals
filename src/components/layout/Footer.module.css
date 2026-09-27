@@ -16,6 +16,9 @@
 }
 
 .item dt {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   margin-bottom: var(--space-1);
   color: var(--color-text-muted);
   font-size: var(--text-sm);

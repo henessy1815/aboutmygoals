@@ -1,5 +1,7 @@
+import { ArrowRight } from 'lucide-react'
 import { useState } from 'react'
 import type { FlowStep } from '../../types'
+import Icon from '../common/Icon'
 import styles from './FlowDiagram.module.css'
 
 interface FlowDiagramProps {
@@ -16,7 +18,7 @@ function FlowDiagram({ steps }: FlowDiagramProps) {
       <ol className={styles.steps}>
         {steps.map((step, index) => (
           <li key={step.id} className={styles.item} data-reveal-item>
-            {index > 0 && <ArrowIcon />}
+            {index > 0 && <ArrowRight className={styles.arrow} size={20} aria-hidden="true" />}
             <button
               type="button"
               className={styles.step}
@@ -25,7 +27,11 @@ function FlowDiagram({ steps }: FlowDiagramProps) {
               onClick={() => setSelectedIndex(index)}
               onMouseEnter={() => setSelectedIndex(index)}
             >
-              <span className={styles.number}>{index + 1}</span>
+              {/* 단계 아이콘 + 오른쪽 위 번호 */}
+              <span className={styles.circle}>
+                <Icon name={step.icon} size={24} />
+                <span className={styles.number}>{index + 1}</span>
+              </span>
               <span className={styles.title}>{step.title}</span>
             </button>
           </li>
@@ -37,21 +43,6 @@ function FlowDiagram({ steps }: FlowDiagramProps) {
         {steps[selectedIndex].description}
       </p>
     </div>
-  )
-}
-
-function ArrowIcon() {
-  return (
-    <svg className={styles.arrow} width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
-      <path
-        d="M5 12h14M13 6l6 6-6 6"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
   )
 }
 

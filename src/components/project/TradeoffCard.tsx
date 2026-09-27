@@ -1,4 +1,7 @@
+import { ChevronDown, Minus, Plus } from 'lucide-react'
 import type { Tradeoff } from '../../types'
+import Icon from '../common/Icon'
+import IconTile from '../common/IconTile'
 import styles from './TradeoffCard.module.css'
 
 interface TradeoffCardProps {
@@ -16,9 +19,12 @@ function TradeoffCard({ tradeoff, prosLabel, consLabel }: TradeoffCardProps) {
   return (
     <details className={styles.card} data-reveal-item>
       <summary className={styles.summary}>
+        <IconTile className={styles.icon}>
+          <Icon name={tradeoff.icon} size={22} />
+        </IconTile>
         <span className={styles.question}>{tradeoff.question}</span>
         <span className={styles.oneLine}>{tradeoff.summary}</span>
-        <ChevronIcon />
+        <ChevronDown className={styles.chevron} size={20} aria-hidden="true" />
       </summary>
 
       <div className={styles.options}>
@@ -32,13 +38,19 @@ function TradeoffCard({ tradeoff, prosLabel, consLabel }: TradeoffCardProps) {
             <ul className={styles.points}>
               {option.pros.map((pro) => (
                 <li key={pro} className={styles.point}>
-                  <span className={`${styles.tag} ${styles.pro}`}>{prosLabel}</span>
+                  <span className={`${styles.tag} ${styles.pro}`}>
+                    <Plus size={11} strokeWidth={3} aria-hidden="true" />
+                    {prosLabel}
+                  </span>
                   {pro}
                 </li>
               ))}
               {option.cons.map((con) => (
                 <li key={con} className={styles.point}>
-                  <span className={`${styles.tag} ${styles.con}`}>{consLabel}</span>
+                  <span className={`${styles.tag} ${styles.con}`}>
+                    <Minus size={11} strokeWidth={3} aria-hidden="true" />
+                    {consLabel}
+                  </span>
                   {con}
                 </li>
               ))}
@@ -47,21 +59,6 @@ function TradeoffCard({ tradeoff, prosLabel, consLabel }: TradeoffCardProps) {
         ))}
       </div>
     </details>
-  )
-}
-
-function ChevronIcon() {
-  return (
-    <svg className={styles.chevron} width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
-      <path
-        d="m6 9 6 6 6-6"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
   )
 }
 

@@ -1,4 +1,6 @@
+import { Info } from 'lucide-react'
 import type { ProjectContent } from '../../types'
+import PillMapIllustration from '../illustrations/PillMapIllustration'
 import Section from '../layout/Section'
 import FlowDiagram from '../project/FlowDiagram'
 import TradeoffCard from '../project/TradeoffCard'
@@ -8,11 +10,14 @@ interface ProjectProps {
   project: ProjectContent
 }
 
-// 가장 비중 큰 섹션: 소개 → 사용 흐름 → 설계 질문 → 안내 문구
+// 가장 비중 큰 섹션: 소개(+일러스트) → 사용 흐름 → 설계 질문 → 안내 문구
 function Project({ project }: ProjectProps) {
   return (
-    <Section id="project" eyebrow={project.eyebrow} title={project.title}>
-      <p className={styles.intro}>{project.intro}</p>
+    <Section id="project" eyebrow={project.eyebrow} eyebrowIcon={project.icon} title={project.title}>
+      <div className={styles.introRow}>
+        <p className={styles.intro}>{project.intro}</p>
+        <PillMapIllustration className={styles.illustration} />
+      </div>
 
       <h3 className={styles.subtitle}>{project.flowTitle}</h3>
       <FlowDiagram steps={project.steps} />
@@ -30,19 +35,10 @@ function Project({ project }: ProjectProps) {
       </div>
 
       <p className={styles.disclaimer}>
-        <InfoIcon />
+        <Info className={styles.infoIcon} size={18} aria-hidden="true" />
         {project.disclaimer}
       </p>
     </Section>
-  )
-}
-
-function InfoIcon() {
-  return (
-    <svg className={styles.infoIcon} width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-      <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="2" />
-      <path d="M12 16v-5M12 8h.01" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-    </svg>
   )
 }
 

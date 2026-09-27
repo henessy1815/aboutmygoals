@@ -6,6 +6,30 @@
 /** 섹션 앵커 id. 여기 없는 값을 쓰면 오류가 납니다. */
 export type SectionId = 'hero' | 'goal' | 'project' | 'learning' | 'idea'
 
+/**
+ * content.ts에서 아이콘을 이름으로 고릅니다. 여기 없는 이름을 쓰면 오류가 납니다.
+ * 이름과 실제 그림의 연결은 components/common/Icon.tsx에 있습니다.
+ */
+export type IconName =
+  | 'flag'
+  | 'pill'
+  | 'graduation-cap'
+  | 'sparkles'
+  | 'globe'
+  | 'git-branch'
+  | 'book-open'
+  | 'camera'
+  | 'scan-search'
+  | 'refresh-cw'
+  | 'layers'
+  | 'gauge'
+  | 'database'
+  | 'lightbulb'
+  | 'rocket'
+  | 'scale'
+  | 'merge'
+  | 'calculator'
+
 /** 헤더 링크 한 개 (hero는 이름 클릭으로 이동하므로 제외) */
 export interface NavItem {
   id: Exclude<SectionId, 'hero'> // 'hero'를 뺀 나머지만 허용
@@ -57,11 +81,13 @@ export interface HeroContent {
 
 export interface Deliverable {
   label: string
+  icon: IconName
   note?: string // 보충 설명 (없어도 됨)
 }
 
 export interface GoalContent {
   eyebrow: string // 제목 위 작은 영문 라벨 (화면에는 대문자로 표시)
+  icon: IconName // 라벨 앞 아이콘
   title: string
   highlight: string
   stacksTitle: string
@@ -74,6 +100,7 @@ export interface GoalContent {
 export interface FlowStep {
   id: string
   title: string // 다이어그램 칸에 표시
+  icon: IconName
   description: string // 선택 시 아래에 표시
 }
 
@@ -86,12 +113,14 @@ export interface TradeoffOption {
 export interface Tradeoff {
   id: string
   question: string
+  icon: IconName
   summary: string // 접힌 상태의 한 줄
   options: [TradeoffOption, TradeoffOption] // 정확히 A, B 두 개
 }
 
 export interface ProjectContent {
   eyebrow: string // 제목 위 작은 영문 라벨 (화면에는 대문자로 표시)
+  icon: IconName // 라벨 앞 아이콘
   title: string
   intro: string
   flowTitle: string
@@ -107,24 +136,32 @@ export interface ProjectContent {
 
 export interface LearningItem {
   title: string
+  icon: IconName
   method: string
 }
 
 export interface LearningContent {
   eyebrow: string // 제목 위 작은 영문 라벨 (화면에는 대문자로 표시)
+  icon: IconName // 라벨 앞 아이콘
   title: string
   items: LearningItem[]
 }
 
 // ── Future Idea ─────────────────────
 
+export interface Challenge {
+  label: string
+  icon: IconName
+}
+
 export interface IdeaContent {
   eyebrow: string // 제목 위 작은 영문 라벨 (화면에는 대문자로 표시)
+  icon: IconName // 라벨 앞 아이콘
   title: string
   description: string
   chains: string[] // 뱃지로 표시
   challengesTitle: string
-  challenges: string[]
+  challenges: Challenge[]
   principleTitle: string
   principle: string
 }

@@ -97,3 +97,10 @@
 - 구현: `useInView`(IntersectionObserver)가 섹션 안쪽과 `data-reveal-item` 요소를 각각 지켜보다 화면에 들어오면 `data-shown`을 붙이고, 같이 들어온 요소끼리 80ms씩 시차. 움직임은 `global.css`. 한 번 나타나면 감시 종료.
 - 움직이는 대상은 section 자체가 아니라 안쪽 div → 현재 섹션 감지(useActiveSection)의 위치 계산이 흔들리지 않음.
 - `screen and (prefers-reduced-motion: no-preference)`일 때만 숨김 → "동작 줄이기" 사용자와 인쇄 시에는 처음부터 모두 보임.
+
+### 아이콘·로고·일러스트로 시각 보강
+- 아이콘: lucide-react (ISC 라이선스). 선 두께·모양이 통일된 아이콘 모음이고, 쓴 아이콘만 빌드에 포함된다. 기존에 손으로 그린 SVG 아이콘도 모두 lucide로 교체해 모양을 통일.
+- 로고: simple-icons (CC0)의 공식 로고를 원래 색으로. 검정에 가까운 로고(Next.js·Ethereum·GitHub)는 다크 모드에서 안 보여 글자색을 따르게 함. Cosmos는 Simple Icons에 없어 일반 아이콘(궤도 모양)으로 대신.
+- 일러스트: 직접 제작한 SVG 3종(Hero, 알약맵, 자산 추적). 색은 global.css 변수를 써서 다크 모드에 자동 대응. `components/illustrations/` 폴더 추가.
+- 아이콘 이름은 content.ts에서 고르고(`IconName` 타입), 이름→그림 연결은 `common/Icon.tsx` 한 곳에서 관리.
+- 일러스트는 움직이지 않음: 기획안의 모션 원칙("등장 시 살짝, 짧고 한 번만")을 지키기 위해 계속 떠다니는 애니메이션은 넣지 않음.

@@ -21,6 +21,18 @@
   mask-image: linear-gradient(to bottom, #000 55%, transparent);
 }
 
+/* 글 + 일러스트: 모바일은 위아래, 데스크톱은 좌우 */
+.layout {
+  display: grid;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.illustration {
+  justify-self: center;
+  max-width: 340px;
+}
+
 .bar {
   display: block;
   width: 48px;
@@ -76,5 +88,16 @@
 @media (min-width: 768px) {
   .tagline {
     font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .layout {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+
+  .illustration {
+    justify-self: end;
+    max-width: 460px;
   }
 }

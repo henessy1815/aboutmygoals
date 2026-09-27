@@ -9,6 +9,10 @@
   height: 100%;
 }
 
+.title {
+  margin-top: var(--space-4);
+}
+
 .method {
   margin-top: var(--space-3);
   color: var(--color-text-muted);

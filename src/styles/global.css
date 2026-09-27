@@ -63,6 +63,8 @@
 
   --color-positive: #1a7f37;
   --color-negative: #b42318;
+  --color-warning: #d97706;
+  --color-warning-soft: #fef3c7;
 
   /* 장식용: Hero 빛·점 무늬, 반투명 헤더, 카드 그림자 */
   --color-glow: rgba(15, 118, 110, 0.14);
@@ -89,6 +91,8 @@
 
   --color-positive: #4ade80;
   --color-negative: #f87171;
+  --color-warning: #fbbf24;
+  --color-warning-soft: #3a2e12;
 
   --color-glow: rgba(45, 212, 191, 0.12);
   --color-dot: rgba(45, 212, 191, 0.22);

@@ -1,3 +1,4 @@
+import { Menu, Target, X } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useActiveSection } from '../../hooks/useActiveSection'
 import type { NavItem, SectionId, UiLabels } from '../../types'
@@ -55,6 +56,7 @@ function Header({ logo, nav, ui }: HeaderProps) {
       <header className={styles.header}>
         <div className={styles.inner}>
           <a href="#hero" className={styles.logo} onClick={closeMenu}>
+            <Target className={styles.logoMark} size={22} aria-hidden="true" />
             {logo}
           </a>
 
@@ -68,7 +70,7 @@ function Header({ logo, nav, ui }: HeaderProps) {
             aria-label={isMenuOpen ? ui.closeMenu : ui.openMenu}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            {isMenuOpen ? <CloseIcon /> : <MenuIcon />}
+            {isMenuOpen ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
           </button>
 
           <nav aria-label={ui.navLabel} className={styles.nav}>
@@ -101,22 +103,6 @@ function Header({ logo, nav, ui }: HeaderProps) {
       {/* 메뉴 뒤 어두운 막. 누르면 메뉴가 닫힘 (키보드 사용자는 Esc로 닫음) */}
       {isMenuOpen && <div className={styles.backdrop} onClick={closeMenu} aria-hidden="true" />}
     </>
-  )
-}
-
-function MenuIcon() {
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-    </svg>
-  )
-}
-
-function CloseIcon() {
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-    </svg>
   )
 }
 

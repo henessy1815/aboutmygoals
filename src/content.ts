@@ -43,19 +43,21 @@ export const content: SiteContent = {
 
   goal: {
     eyebrow: 'Goal',
+    icon: 'flag',
     title: '이루고 싶은 목표',
     highlight: '개발자로서의 취업',
     stacksTitle: '기술 스택별 역할',
     deliverablesTitle: '과정이 끝날 때 남길 결과물',
     deliverables: [
-      { label: '배포된 서비스 1개' },
-      { label: '설계 결정 기록이 담긴 저장소' },
-      { label: 'CS 및 Java 지식', note: '추가 스터디' },
+      { label: '배포된 서비스 1개', icon: 'globe' },
+      { label: '설계 결정 기록이 담긴 저장소', icon: 'git-branch' },
+      { label: 'CS 및 Java 지식', note: '추가 스터디', icon: 'book-open' },
     ],
   },
 
   project: {
     eyebrow: 'Project',
+    icon: 'pill',
     title: '알약맵(PillMap)',
     intro:
       '여러 알약을 한 장에 펼쳐 촬영하면 각 알약의 후보 의약품을 한 번에 식별하는 다중 알약 식별 앱. 식별이 어려운 알약만 추가 촬영을 요청해 하나씩 검색하는 번거로움을 줄입니다.',
@@ -64,16 +66,19 @@ export const content: SiteContent = {
       {
         id: 'capture',
         title: '촬영',
+        icon: 'camera',
         description: '여러 알약을 한 장에 펼쳐 촬영',
       },
       {
         id: 'identify',
         title: '알약별 후보 식별',
+        icon: 'scan-search',
         description: '사진 속 알약을 하나씩 찾아 모양·색·각인으로 후보 의약품 식별',
       },
       {
         id: 'retake',
         title: '불확실한 알약만 재촬영 요청',
+        icon: 'refresh-cw',
         description: '확신이 낮은 알약만 골라 추가 촬영 요청',
       },
     ],
@@ -84,6 +89,7 @@ export const content: SiteContent = {
       {
         id: 'separation',
         question: '다중 알약 분리 인식',
+        icon: 'layers',
         summary: '여러 알약을 한 번에 처리할까, 하나씩 떼어 처리할까?',
         options: [
           { label: '일괄 처리', pros: ['빠름'], cons: ['알약이 붙어 있으면 헷갈림'] },
@@ -93,6 +99,7 @@ export const content: SiteContent = {
       {
         id: 'threshold',
         question: '결과 노출 기준',
+        icon: 'gauge',
         summary: '얼마나 확신할 때 결과를 보여줄까?',
         options: [
           { label: '높은 확신도 기준', pros: ['안전'], cons: ['재촬영 증가'] },
@@ -102,6 +109,7 @@ export const content: SiteContent = {
       {
         id: 'method',
         question: '식별 방식',
+        icon: 'database',
         summary: 'AI에게 바로 물을까, 공식 데이터에서 찾을까?',
         options: [
           {
@@ -122,18 +130,22 @@ export const content: SiteContent = {
 
   learning: {
     eyebrow: 'Learning',
+    icon: 'graduation-cap',
     title: '배우고 싶은 것',
     items: [
       {
         title: '러닝커브 낮추기',
+        icon: 'lightbulb',
         method: '개념 설명 → 작은 예제로 확인 → 적용',
       },
       {
         title: '기획~배포 빌드 경험',
+        icon: 'rocket',
         method: '알약맵을 요구사항부터 배포까지 완주',
       },
       {
         title: '기술 선택의 안목',
+        icon: 'scale',
         method: '두 방식을 구현·비교하고 선택 이유를 기록',
       },
     ],
@@ -141,14 +153,15 @@ export const content: SiteContent = {
 
   idea: {
     eyebrow: 'Future Idea',
+    icon: 'sparkles',
     title: '개인별 디지털 자산 추적 앱',
     description:
       '국내 가상자산 과세에 대비해 여러 체인의 트랜잭션을 추적하고 시각화합니다.',
     chains: ['Ethereum', 'Solana', 'Cosmos'],
     challengesTitle: '핵심 과제',
     challenges: [
-      '체인별로 다른 거래 구조를 공통 형식으로 통합',
-      '취득시점 및 취득가액 계산',
+      { label: '체인별로 다른 거래 구조를 공통 형식으로 통합', icon: 'merge' },
+      { label: '취득시점 및 취득가액 계산', icon: 'calculator' },
     ],
     principleTitle: '원칙',
     principle: '지갑 주소만 입력받는 읽기 전용 방식 (개인키 미수집)',

@@ -1,4 +1,7 @@
+import { CalendarDays, Mail } from 'lucide-react'
 import type { FooterContent, Profile } from '../../types'
+import BrandIcon from '../common/BrandIcon'
+import { GITHUB_LOGO } from '../common/brandLogos'
 import styles from './Footer.module.css'
 
 interface FooterProps {
@@ -16,13 +19,19 @@ function Footer({ profile, footer }: FooterProps) {
         {/* dl: "항목 이름(dt) – 값(dd)" 짝을 나타내는 HTML 목록 */}
         <dl className={styles.list}>
           <div className={styles.item}>
-            <dt>{footer.contactLabel}</dt>
+            <dt>
+              <Mail size={15} aria-hidden="true" />
+              {footer.contactLabel}
+            </dt>
             <dd>
               <a href={`mailto:${profile.email}`}>{profile.email}</a>
             </dd>
           </div>
           <div className={styles.item}>
-            <dt>{footer.githubLabel}</dt>
+            <dt>
+              <BrandIcon icon={GITHUB_LOGO} size={15} />
+              {footer.githubLabel}
+            </dt>
             <dd>
               <a href={profile.githubUrl} target="_blank" rel="noreferrer">
                 {githubText}
@@ -30,7 +39,10 @@ function Footer({ profile, footer }: FooterProps) {
             </dd>
           </div>
           <div className={styles.item}>
-            <dt>{footer.writtenAtLabel}</dt>
+            <dt>
+              <CalendarDays size={15} aria-hidden="true" />
+              {footer.writtenAtLabel}
+            </dt>
             <dd>{profile.writtenAt}</dd>
           </div>
         </dl>
