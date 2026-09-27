@@ -33,6 +33,10 @@ export const content: SiteContent = {
     { id: 'supabase', name: 'Supabase', role: '데이터·인증' },
   ],
 
+  header: {
+    logo: 'MyGoals',
+  },
+
   hero: {
     githubLabel: 'GitHub',
   },

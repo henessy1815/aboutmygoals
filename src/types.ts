@@ -41,6 +41,12 @@ export interface TechStack {
   role: string // 역할 카드에 표시
 }
 
+// ── Header ──────────────────────────
+
+export interface HeaderContent {
+  logo: string // 왼쪽 위 로고 문구
+}
+
 // ── Hero ────────────────────────────
 
 export interface HeroContent {
@@ -137,6 +143,7 @@ export interface SiteContent {
   profile: Profile
   nav: NavItem[]
   ui: UiLabels
+  header: HeaderContent
   stacks: TechStack[]
   hero: HeroContent
   goal: GoalContent

@@ -12,7 +12,7 @@ import { content } from './content'
 function App() {
   return (
     <>
-      <Header name={content.profile.name} nav={content.nav} ui={content.ui} />
+      <Header logo={content.header.logo} nav={content.nav} ui={content.ui} />
       <main>
         <Hero profile={content.profile} stacks={content.stacks} hero={content.hero} />
         <Goal goal={content.goal} stacks={content.stacks} />

@@ -5,7 +5,7 @@ import styles from './Header.module.css'
 import ThemeToggle from './ThemeToggle'
 
 interface HeaderProps {
-  name: string
+  logo: string
   nav: NavItem[]
   ui: UiLabels
 }
@@ -14,7 +14,7 @@ const MENU_ID = 'site-menu'
 // 이 너비 이상이면 링크가 헤더에 바로 보이므로 햄버거 메뉴가 필요 없음 (CSS와 같은 값)
 const DESKTOP_QUERY = '(min-width: 768px)'
 
-function Header({ name, nav, ui }: HeaderProps) {
+function Header({ logo, nav, ui }: HeaderProps) {
   // 감시할 섹션 목록: hero + 네비 항목들.
   // useMemo: nav가 바뀌지 않는 한 같은 배열을 재사용 → useActiveSection이 매번 다시 설정되지 않음
   const sectionIds = useMemo<SectionId[]>(() => ['hero', ...nav.map((item) => item.id)], [nav])
@@ -55,7 +55,7 @@ function Header({ name, nav, ui }: HeaderProps) {
       <header className={styles.header}>
         <div className={styles.inner}>
           <a href="#hero" className={styles.logo} onClick={closeMenu}>
-            {name}
+            {logo}
           </a>
 
           {/* 모바일 전용 햄버거 버튼. 키보드 순서상 바로 다음이 메뉴 링크가 되도록 nav 앞에 둠 */}
