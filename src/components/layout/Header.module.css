@@ -1,0 +1,78 @@
+/* sticky: 스크롤해도 화면 위에 붙어 있음 (fixed와 달리 본문을 가리지 않도록 자리를 차지함) */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: var(--header-height);
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  height: 100%;
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+.logo {
+  flex-shrink: 0;
+  color: var(--color-text);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.nav {
+  flex: 1;
+  min-width: 0;
+  /* 임시: 좁은 화면에서는 가로 스크롤. 7단계에서 햄버거 메뉴로 교체 */
+  overflow-x: auto;
+}
+
+/* 오른쪽 정렬. justify-content: flex-end를 쓰면 넘친 부분이 왼쪽으로 잘려 스크롤로도 못 봄 */
+.links {
+  display: flex;
+  gap: var(--space-1);
+  width: fit-content;
+  margin-left: auto;
+}
+
+.link {
+  display: block;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color var(--duration);
+}
+
+.link:hover {
+  color: var(--color-text);
+}
+
+/* 현재 섹션: 색 + 굵기로 강조 (색만으로 구분하지 않기 위해 굵기도 바꿈) */
+.active,
+.active:hover {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  .inner {
+    padding-inline: var(--space-8);
+  }
+
+  .links {
+    gap: var(--space-2);
+  }
+
+  .link {
+    font-size: var(--text-base);
+  }
+}

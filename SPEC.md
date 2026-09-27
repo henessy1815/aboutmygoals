@@ -158,7 +158,7 @@ docs/
 ## 8. 개인 정보
 
 - 이름: 김남일
-- 한 줄 소개: Never say never
+- 한 줄 소개: 사용자에게 필요한 것을 만들고, 그 방식을 고른 이유까지 설명할 수 있는 개발자
 - GitHub: https://github.com/henessy1815
 - 연락처: nikim3957@gmail.com
 - 작성일: 2026.09.28

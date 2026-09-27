@@ -1,0 +1,17 @@
+/* 첫 화면: 헤더를 뺀 화면 높이를 거의 다 차지하고, 내용은 세로 가운데 */
+.hero {
+  display: grid;
+  align-content: center;
+  min-height: calc(100svh - var(--header-height));
+}
+
+.name {
+  font-size: var(--text-hero);
+}
+
+.tagline {
+  margin-top: var(--space-4);
+  color: var(--color-text-muted);
+  font-size: var(--text-lg);
+  text-wrap: balance; /* 두 줄이 될 때 한 단어만 떨어지지 않게 줄 길이를 고르게 */
+}

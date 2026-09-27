@@ -1,0 +1,163 @@
+/*
+ * 전체 페이지 공통 스타일
+ * 1) 디자인 값(색·글꼴·간격)을 CSS 변수로 정의
+ * 2) 라이트/다크 테마: <html data-theme="..."> 값에 따라 색 변수만 바꿈
+ * 3) 브라우저 기본 스타일 리셋
+ *
+ * 반응형 기준 너비 (CSS 변수는 @media 안에서 쓸 수 없어 숫자로 직접 씀)
+ *   태블릿: 768px 이상 / 데스크톱: 1024px 이상
+ */
+
+/* ── 1. 테마와 상관없는 값 ───────────────── */
+:root {
+  --font-sans: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont,
+    system-ui, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas,
+    'Liberation Mono', monospace;
+
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 2rem;
+  --text-hero: clamp(2.5rem, 7vw, 4rem); /* 화면 너비에 따라 2.5~4rem 사이 */
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-full: 999px;
+
+  --content-max: 1080px;
+  --header-height: 64px;
+
+  --duration: 200ms;
+}
+
+/* ── 2. 라이트 테마 (기본값) ──────────────── */
+:root,
+:root[data-theme='light'] {
+  color-scheme: light; /* 스크롤바 등 브라우저 기본 UI도 밝게 */
+
+  --color-bg: #ffffff;
+  --color-bg-subtle: #f5f6f8;
+  --color-surface: #ffffff;
+  --color-border: #e3e6ea;
+  --color-text: #1f2328;
+  --color-text-muted: #5b6470;
+
+  --color-accent: #0f766e;
+  --color-accent-hover: #115e59;
+  --color-accent-soft: #e6f4f2;
+  --color-on-accent: #ffffff;
+
+  --color-positive: #1a7f37;
+  --color-negative: #b42318;
+}
+
+/* ── 2. 다크 테마 ────────────────────────── */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-bg: #0f172a;
+  --color-bg-subtle: #151f33;
+  --color-surface: #1a2438;
+  --color-border: #2a3650;
+  --color-text: #e2e8f0;
+  --color-text-muted: #9aa6b8;
+
+  --color-accent: #2dd4bf;
+  --color-accent-hover: #5eead4;
+  --color-accent-soft: #12343a;
+  --color-on-accent: #04201c;
+
+  --color-positive: #4ade80;
+  --color-negative: #f87171;
+}
+
+/* ── 3. 리셋 ─────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* 앵커로 이동할 때 고정 헤더에 제목이 가려지지 않게 */
+  scroll-padding-top: var(--header-height);
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  /* 한글이 단어 중간에서 줄바꿈되지 않게 */
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.3;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+a {
+  color: var(--color-accent);
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+/* 키보드로 이동할 때만 보이는 초점 테두리 */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* OS에서 "동작 줄이기"를 켠 사용자: 애니메이션·부드러운 스크롤 끔 */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
