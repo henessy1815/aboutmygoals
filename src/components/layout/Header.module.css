@@ -14,7 +14,7 @@
 .inner {
   display: flex;
   align-items: center;
-  gap: var(--space-4);
+  gap: var(--space-2);
   height: 100%;
   max-width: var(--content-max);
   margin-inline: auto;
@@ -23,33 +23,57 @@
 
 .logo {
   flex-shrink: 0;
+  margin-right: auto; /* 나머지 요소를 오른쪽으로 밀어냄 */
   color: var(--color-text);
   font-size: var(--text-lg);
   font-weight: 700;
   text-decoration: none;
 }
 
-.nav {
-  flex: 1;
-  min-width: 0;
-  /* 임시: 좁은 화면에서는 가로 스크롤. 7단계에서 햄버거 메뉴로 교체 */
-  overflow-x: auto;
+/* ── 모바일 (768px 미만) ───────────────────── */
+
+/* 화면상 순서: 이름 … 테마 버튼, 햄버거 버튼 (HTML 순서와 다르게 배치) */
+.theme {
+  order: 1;
 }
 
-/* 오른쪽 정렬. justify-content: flex-end를 쓰면 넘친 부분이 왼쪽으로 잘려 스크롤로도 못 봄 */
+.menuButton {
+  order: 2;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+/* 메뉴가 닫혀 있으면 링크 목록을 숨김 (키보드·스크린리더에서도 사라짐) */
 .links {
+  display: none;
+}
+
+/* 메뉴가 열리면 헤더 바로 아래에 세로로 펼침 */
+.links.open {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
   display: flex;
-  gap: var(--space-1);
-  width: fit-content;
-  margin-left: auto;
+  flex-direction: column;
+  padding: var(--space-2) var(--space-4) var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+  box-shadow: var(--shadow-card);
+  animation: slide-down var(--duration) ease-out;
 }
 
 .link {
   display: block;
-  padding: var(--space-2) var(--space-3);
+  padding: var(--space-3) var(--space-4); /* 손가락으로 누르기 쉬운 높이 */
   border-radius: var(--radius-sm);
   color: var(--color-text-muted);
-  font-size: var(--text-sm);
   text-decoration: none;
   white-space: nowrap;
   transition: color var(--duration);
@@ -66,16 +90,59 @@
   font-weight: 600;
 }
 
+.open .active {
+  background-color: var(--color-accent-soft);
+}
+
+/* 메뉴 뒤 어두운 막: 헤더 아래 화면 전체 */
+.backdrop {
+  position: fixed;
+  inset: var(--header-height) 0 0 0;
+  z-index: 9; /* 헤더(10)보다 아래 */
+  background-color: rgba(0, 0, 0, 0.3);
+  animation: fade-in var(--duration) ease-out;
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* ── 태블릿 이상 (768px 이상): 링크를 헤더에 바로 표시 ── */
 @media (min-width: 768px) {
   .inner {
+    gap: var(--space-4);
     padding-inline: var(--space-8);
   }
 
+  .logo {
+    margin-right: 0;
+  }
+
+  .menuButton,
+  .backdrop {
+    display: none;
+  }
+
+  .nav {
+    flex: 1;
+  }
+
   .links {
+    display: flex;
+    justify-content: flex-end;
     gap: var(--space-2);
   }
 
-  .link {
-    font-size: var(--text-base);
+  .theme {
+    order: 0;
   }
 }
