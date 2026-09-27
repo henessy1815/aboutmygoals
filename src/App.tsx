@@ -1,3 +1,4 @@
+import Footer from './components/layout/Footer'
 import Header from './components/layout/Header'
 import FutureIdea from './components/sections/FutureIdea'
 import Goal from './components/sections/Goal'
@@ -13,12 +14,13 @@ function App() {
     <>
       <Header name={content.profile.name} nav={content.nav} ui={content.ui} />
       <main>
-        <Hero profile={content.profile} />
-        <Goal goal={content.goal} />
+        <Hero profile={content.profile} stacks={content.stacks} hero={content.hero} />
+        <Goal goal={content.goal} stacks={content.stacks} />
         <Project project={content.project} />
         <Learning learning={content.learning} />
         <FutureIdea idea={content.idea} />
       </main>
+      <Footer profile={content.profile} footer={content.footer} />
     </>
   )
 }

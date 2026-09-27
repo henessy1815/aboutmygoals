@@ -5,9 +5,9 @@ interface ProjectProps {
   project: ProjectContent
 }
 
-// 3단계: 빈 틀. 내용은 6단계에서 추가
+// 빈 틀. 내용은 6단계에서 추가
 function Project({ project }: ProjectProps) {
-  return <Section id="project" title={project.title} />
+  return <Section id="project" eyebrow={project.eyebrow} title={project.title} />
 }
 
 export default Project

@@ -55,6 +55,7 @@ export interface Deliverable {
 }
 
 export interface GoalContent {
+  eyebrow: string // 제목 위 작은 영문 라벨 (화면에는 대문자로 표시)
   title: string
   highlight: string
   stacksTitle: string
@@ -84,6 +85,7 @@ export interface Tradeoff {
 }
 
 export interface ProjectContent {
+  eyebrow: string // 제목 위 작은 영문 라벨 (화면에는 대문자로 표시)
   title: string
   intro: string
   flowTitle: string
@@ -103,6 +105,7 @@ export interface LearningItem {
 }
 
 export interface LearningContent {
+  eyebrow: string // 제목 위 작은 영문 라벨 (화면에는 대문자로 표시)
   title: string
   items: LearningItem[]
 }
@@ -110,6 +113,7 @@ export interface LearningContent {
 // ── Future Idea ─────────────────────
 
 export interface IdeaContent {
+  eyebrow: string // 제목 위 작은 영문 라벨 (화면에는 대문자로 표시)
   title: string
   description: string
   chains: string[] // 뱃지로 표시

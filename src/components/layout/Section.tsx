@@ -4,13 +4,14 @@ import styles from './Section.module.css'
 
 interface SectionProps {
   id: SectionId
+  eyebrow?: string // 제목 위 작은 영문 라벨
   title?: string // Hero처럼 제목이 없는 섹션도 있어서 선택값
   className?: string // 섹션마다 추가 스타일이 필요할 때
   children?: ReactNode
 }
 
-// 모든 섹션의 공통 틀: 앵커 id, 가운데 정렬된 본문 폭, 제목
-function Section({ id, title, className, children }: SectionProps) {
+// 모든 섹션의 공통 틀: 앵커 id, 가운데 정렬된 본문 폭, 라벨 + 제목
+function Section({ id, eyebrow, title, className, children }: SectionProps) {
   const titleId = `${id}-title`
 
   return (
@@ -21,9 +22,17 @@ function Section({ id, title, className, children }: SectionProps) {
     >
       <div className={styles.inner}>
         {title && (
-          <h2 id={titleId} className={styles.title}>
-            {title}
-          </h2>
+          <div className={styles.head}>
+            {/* 제목과 뜻이 겹치는 장식용 라벨이라 스크린리더에서는 읽지 않음 */}
+            {eyebrow && (
+              <p className={styles.eyebrow} aria-hidden="true">
+                {eyebrow}
+              </p>
+            )}
+            <h2 id={titleId} className={styles.title}>
+              {title}
+            </h2>
+          </div>
         )}
         {children}
       </div>

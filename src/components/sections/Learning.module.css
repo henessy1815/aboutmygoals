@@ -1,0 +1,21 @@
+/* 학습 카드: 모바일 1열 → 태블릿 이상 3열 */
+.list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+.card {
+  height: 100%;
+}
+
+.method {
+  margin-top: var(--space-3);
+  color: var(--color-text-muted);
+}
+
+@media (min-width: 768px) {
+  .list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

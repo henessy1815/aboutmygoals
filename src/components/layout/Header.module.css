@@ -5,7 +5,10 @@
   z-index: 10;
   height: var(--header-height);
   border-bottom: 1px solid var(--color-border);
-  background-color: var(--color-bg);
+  /* 반투명 + 흐림: 스크롤할 때 아래 내용이 은은하게 비침 */
+  background-color: var(--color-header-bg);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
 }
 
 .inner {

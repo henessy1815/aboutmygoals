@@ -38,6 +38,7 @@ export const content: SiteContent = {
   },
 
   goal: {
+    eyebrow: 'Goal',
     title: '이루고 싶은 목표',
     highlight: '개발자로서의 취업',
     stacksTitle: '기술 스택별 역할',
@@ -50,6 +51,7 @@ export const content: SiteContent = {
   },
 
   project: {
+    eyebrow: 'Project',
     title: '알약맵(PillMap)',
     intro:
       '여러 알약을 한 장에 펼쳐 촬영하면 각 알약의 후보 의약품을 한 번에 식별하는 다중 알약 식별 앱. 식별이 어려운 알약만 추가 촬영을 요청해 하나씩 검색하는 번거로움을 줄입니다.',
@@ -115,6 +117,7 @@ export const content: SiteContent = {
   },
 
   learning: {
+    eyebrow: 'Learning',
     title: '배우고 싶은 것',
     items: [
       {
@@ -133,6 +136,7 @@ export const content: SiteContent = {
   },
 
   idea: {
+    eyebrow: 'Future Idea',
     title: '개인별 디지털 자산 추적 앱',
     description:
       '국내 가상자산 과세에 대비해 여러 체인의 트랜잭션을 추적하고 시각화합니다.',

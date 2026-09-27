@@ -1,0 +1,63 @@
+.description {
+  max-width: 42em;
+  font-size: var(--text-lg);
+}
+
+.chains {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-6);
+}
+
+/* 핵심 과제 | 원칙: 모바일 위아래 → 태블릿 이상 나란히 */
+.columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+  margin-top: var(--space-12);
+}
+
+.subtitle {
+  margin-bottom: var(--space-4);
+}
+
+.challenges {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.challenge {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+}
+
+.index {
+  flex-shrink: 0;
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+.principle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-6);
+  border-left: 3px solid var(--color-accent);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  background-color: var(--color-bg-subtle);
+}
+
+.lockIcon {
+  flex-shrink: 0;
+  color: var(--color-accent);
+}
+
+@media (min-width: 768px) {
+  .columns {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
